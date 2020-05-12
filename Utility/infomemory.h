@@ -13,7 +13,7 @@ class InfoMemory: public Info{
     string memoryLoad;
     string totalVirt;
     string availVirt;
-    string totalPagefile;
+
 public:
     InfoMemory(){ getStatus();}
     ~InfoMemory(){}
@@ -23,7 +23,7 @@ public:
     string getAvailPhys() const;
     string getMemoryLoad() const;
     string getTotalVirt() const;
-    string getTotalPagefile() const;
+
 };
 
 #endif // INFOMEMORY_H

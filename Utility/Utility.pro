@@ -16,6 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    application.cpp \
+    applicationbuilder.cpp \
     infocpu.cpp \
     infomemory.cpp \
     infonames.cpp \
@@ -27,6 +29,9 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    WinAPIHelper.h \
+    application.h \
+    applicationbuilder.h \
     info.h \
     infocpu.h \
     infomemory.h \

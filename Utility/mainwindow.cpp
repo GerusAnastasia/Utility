@@ -10,6 +10,7 @@
 #include <QTimer>
 #include "infotime.h"
 #include "infomemory.h"
+#include "WinAPIHelper.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->labelTotalVirt->setText(im.getTotalVirt().c_str());
     ui->labelFreePhis->setText(im.getAvailPhys().c_str());
       ui->labelFreeVirt->setText(im.getAvailVirt().c_str());
-      ui->labelPage->setText(im.getTotalPagefile().c_str());
+
     //отрисовка вкладки основная информация
 
     QByteArray ba(in.getUserName().c_str());                  // Convert to QByteArray
@@ -59,7 +60,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->DiskTable->setColumnWidth(0, 100);
     ui->DiskTable->setColumnWidth(1, 100);
     ui->DiskTable->setColumnWidth(2, 170);
-    ui->DiskTable->setColumnWidth(3, 106);
+    ui->DiskTable->setColumnWidth(3, 150);
+
     QStringList table_names;
     table_names << "Имя диска" << "Имя тома" << "Файловая система" << "Свободно";
     ui->DiskTable->setHorizontalHeaderLabels(table_names);
@@ -81,6 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
            QString temp3 (iv.getFreeSpace(count).c_str());
             ui->DiskTable->setItem(count, 3, new QTableWidgetItem (temp3));
          }
+
 
 
     //отрисовка вкладки видеосистема
@@ -137,6 +140,45 @@ MainWindow::MainWindow(QWidget *parent) :
         }
        i++;
     }
+
+    //отрисовка приложений
+    vector<Application*> applications = WinAPIHelper::getApplicationList();
+    int size = applications.size();
+    ui->labelAppCount->setText(QString::number(size));
+
+    ui->AppTable->setColumnCount(5);
+    ui->AppTable->setColumnWidth(0, 100);
+    ui->AppTable->setColumnWidth(1, 100);
+    ui->AppTable->setColumnWidth(2, 170);
+    ui->AppTable->setColumnWidth(3, 150);
+    ui->AppTable->setColumnWidth(4, 150);
+
+    QStringList table_names1;
+    table_names1 << "Название" << "Версия" << "Издатель" << "Дата установки" << "Путь";
+    ui->AppTable->setHorizontalHeaderLabels(table_names1);
+    ui->AppTable->setRowCount(size);
+    ui->AppTable->setShowGrid(true);
+    ui->AppTable->verticalHeader()->hide();
+
+        for (int count = 0; count < size; ++count){
+
+            QString temp (applications[count]->appName().c_str());
+            ui->AppTable->setItem(count, 0, new QTableWidgetItem (temp));
+
+         QString temp1 (applications[count]->version().c_str());
+          ui->AppTable->setItem(count, 1, new QTableWidgetItem (temp1));
+
+          QString temp2 (applications[count]->publisher().c_str());
+           ui->AppTable->setItem(count, 2, new QTableWidgetItem (temp2));
+
+           QString temp3 (applications[count]->installDate().c_str());
+            ui->AppTable->setItem(count, 3, new QTableWidgetItem (temp3));
+
+            QString temp4 (applications[count]->location().c_str());
+             ui->AppTable->setItem(count, 4, new QTableWidgetItem (temp4));
+        }
+
+
     timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(slotTimerAlarm()));
     timer->start(1000); // И запустим таймер
@@ -158,7 +200,6 @@ void MainWindow::slotTimerAlarm()
     ui->labelTotalVirt->setText(im.getTotalVirt().c_str());
     ui->labelFreePhis->setText(im.getAvailPhys().c_str());
     ui->labelFreeVirt->setText(im.getAvailVirt().c_str());
-    ui->labelPage->setText(im.getTotalPagefile().c_str());
     ui->labelTime->setText(it.getTimeUPC().c_str());
     ui->labelTime_2->setText(it.getTimeLocal().c_str());
     ui->labelTimeUp->setText(it.getTimeFromStart().c_str());

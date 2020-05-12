@@ -122,6 +122,18 @@
       <property name="enabled">
        <bool>true</bool>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>550</width>
+        <height>310</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>ArrowCursor</cursorShape>
       </property>
@@ -174,7 +186,7 @@
           <item>
            <widget class="QLabel" name="label_9">
             <property name="text">
-             <string>Производитель процесора</string>
+             <string>Процесор</string>
             </property>
            </widget>
           </item>
@@ -349,24 +361,6 @@
           </item>
           <item>
            <widget class="QLabel" name="labelFreeVirt">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_35">
-          <item>
-           <widget class="QLabel" name="label_22">
-            <property name="text">
-             <string>Файл подкачки</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="labelPage">
             <property name="text">
              <string/>
             </property>
@@ -779,24 +773,6 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_17">
         <item>
-         <widget class="QLabel" name="label_4">
-          <property name="font">
-           <font>
-            <pointsize>8</pointsize>
-           </font>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="text">
-           <string>Информация о дисках</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QTableWidget" name="DiskTable"/>
         </item>
        </layout>
@@ -808,11 +784,37 @@
        <widget class="QTableWidget" name="AppTable">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>80</y>
-          <width>256</width>
-          <height>192</height>
+          <x>6</x>
+          <y>34</y>
+          <width>521</width>
+          <height>251</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>341</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Количество установленных приложений</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelAppCount">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>10</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>

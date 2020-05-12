@@ -29,10 +29,7 @@ string InfoMemory::getAvailVirt() const
     return availVirt;
 }
 
-string InfoMemory::getTotalPagefile() const
-{
-    return totalPagefile;
-}
+
 
 void InfoMemory:: getStatus(){
 
@@ -44,7 +41,5 @@ void InfoMemory:: getStatus(){
         availPhys =  to_string(static_cast<unsigned long long>(ms.ullAvailPhys/(1024*1024)))+" MB";
         totalVirt = to_string(static_cast<unsigned long long>(ms.ullTotalPageFile/(1024*1024)))+" MB";
         availVirt = to_string(static_cast<unsigned long long>(ms.ullAvailPageFile/(1024*1024)))+" MB";
-       // totalPagefile = to_string(static_cast<unsigned long long>(ms.ull/(1024*1024)))+" MB";
-
 
 }

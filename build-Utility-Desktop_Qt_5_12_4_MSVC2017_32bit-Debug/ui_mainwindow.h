@@ -82,9 +82,6 @@ public:
     QHBoxLayout *horizontalLayout_34;
     QLabel *label_20;
     QLabel *labelFreeVirt;
-    QHBoxLayout *horizontalLayout_35;
-    QLabel *label_22;
-    QLabel *labelPage;
     QWidget *tab_3;
     QHBoxLayout *horizontalLayout_60;
     QVBoxLayout *verticalLayout_13;
@@ -155,10 +152,11 @@ public:
     QLabel *labelDeepRes4;
     QWidget *tab_5;
     QVBoxLayout *verticalLayout_17;
-    QLabel *label_4;
     QTableWidget *DiskTable;
     QWidget *tab_4;
     QTableWidget *AppTable;
+    QLabel *label_8;
+    QLabel *labelAppCount;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -237,6 +235,8 @@ public:
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setEnabled(true);
+        tabWidget->setMinimumSize(QSize(550, 310));
+        tabWidget->setBaseSize(QSize(0, 0));
         tabWidget->setCursor(QCursor(Qt::ArrowCursor));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
@@ -442,22 +442,6 @@ public:
 
 
         verticalLayout_10->addLayout(horizontalLayout_34);
-
-        horizontalLayout_35 = new QHBoxLayout();
-        horizontalLayout_35->setSpacing(6);
-        horizontalLayout_35->setObjectName(QString::fromUtf8("horizontalLayout_35"));
-        label_22 = new QLabel(tab_2);
-        label_22->setObjectName(QString::fromUtf8("label_22"));
-
-        horizontalLayout_35->addWidget(label_22);
-
-        labelPage = new QLabel(tab_2);
-        labelPage->setObjectName(QString::fromUtf8("labelPage"));
-
-        horizontalLayout_35->addWidget(labelPage);
-
-
-        verticalLayout_10->addLayout(horizontalLayout_35);
 
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
@@ -831,16 +815,6 @@ public:
         verticalLayout_17->setSpacing(6);
         verticalLayout_17->setContentsMargins(11, 11, 11, 11);
         verticalLayout_17->setObjectName(QString::fromUtf8("verticalLayout_17"));
-        label_4 = new QLabel(tab_5);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        QFont font;
-        font.setPointSize(8);
-        label_4->setFont(font);
-        label_4->setLayoutDirection(Qt::LeftToRight);
-        label_4->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_17->addWidget(label_4);
-
         DiskTable = new QTableWidget(tab_5);
         DiskTable->setObjectName(QString::fromUtf8("DiskTable"));
 
@@ -851,7 +825,13 @@ public:
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
         AppTable = new QTableWidget(tab_4);
         AppTable->setObjectName(QString::fromUtf8("AppTable"));
-        AppTable->setGeometry(QRect(150, 80, 256, 192));
+        AppTable->setGeometry(QRect(6, 34, 521, 251));
+        label_8 = new QLabel(tab_4);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setGeometry(QRect(10, 10, 341, 21));
+        labelAppCount = new QLabel(tab_4);
+        labelAppCount->setObjectName(QString::fromUtf8("labelAppCount"));
+        labelAppCount->setGeometry(QRect(420, 10, 81, 21));
         tabWidget->addTab(tab_4, QString());
 
         verticalLayout->addWidget(tabWidget);
@@ -883,7 +863,7 @@ public:
         labelComputerName->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_7->setText(QApplication::translate("MainWindow", "\320\230\320\274\321\217 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
         labelUserName->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_9->setText(QApplication::translate("MainWindow", "\320\237\321\200\320\276\320\270\320\267\320\262\320\276\320\264\320\270\321\202\320\265\320\273\321\214 \320\277\321\200\320\276\321\206\320\265\321\201\320\276\321\200\320\260", nullptr));
+        label_9->setText(QApplication::translate("MainWindow", "\320\237\321\200\320\276\321\206\320\265\321\201\320\276\321\200", nullptr));
         labelCPU->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_11->setText(QApplication::translate("MainWindow", "\320\242\320\270\320\277 \320\260\321\200\321\205\320\270\321\202\320\265\320\272\321\202\321\203\321\200\321\213", nullptr));
         labelArchiType->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
@@ -904,8 +884,6 @@ public:
         labelTotalVirt->setText(QString());
         label_20->setText(QApplication::translate("MainWindow", "\320\241\320\262\320\276\320\261\320\276\320\264\320\275\320\260\321\217 \320\262\320\270\321\200\321\202\321\203\320\260\320\273\321\214\320\275\320\260\321\217 \320\277\320\260\320\274\321\217\321\202\321\214", nullptr));
         labelFreeVirt->setText(QString());
-        label_22->setText(QApplication::translate("MainWindow", "\320\244\320\260\320\271\320\273 \320\277\320\276\320\264\320\272\320\260\321\207\320\272\320\270", nullptr));
-        labelPage->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "\320\237\320\260\320\274\321\217\321\202\321\214", nullptr));
         labelDis1->setText(QApplication::translate("MainWindow", "\320\224\320\270\321\201\320\277\320\273\320\265\320\271", nullptr));
         labelDisplay1->setText(QString());
@@ -948,8 +926,9 @@ public:
         labelDeep4->setText(QString());
         labelDeepRes4->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "\320\222\320\270\320\264\320\265\320\276\321\201\320\270\321\201\321\202\320\265\320\274\320\260", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "\320\230\320\275\321\204\320\276\321\200\320\274\320\260\321\206\320\270\321\217 \320\276 \320\264\320\270\321\201\320\272\320\260\321\205", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("MainWindow", "\320\224\320\270\321\201\320\272\320\270", nullptr));
+        label_8->setText(QApplication::translate("MainWindow", "\320\232\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \321\203\321\201\321\202\320\260\320\275\320\276\320\262\320\273\320\265\320\275\320\275\321\213\321\205 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\320\271", nullptr));
+        labelAppCount->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("MainWindow", "\320\237\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\321\217", nullptr));
     } // retranslateUi
 
